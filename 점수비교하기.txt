@@ -1,0 +1,191 @@
+int main() {
+	/*이름입력*/
+	char name1[10];
+	char name2[10];
+	char name3[10];
+	char name4[10];
+	int s1, s2, s3, s4;
+
+	printf("4명의 이름과 각자의 점수를 입력하세요");
+	printf("\n첫번째 사람 이름 :");
+	scanf("%s", &name1);
+	printf("\n%s가 받은 점수 입력 : ", name1);
+	scanf("%d", &s1);
+	printf("\n두번째 사람 이름 :");
+	scanf("%s", &name2);
+	printf("\n%s가 받은 점수 입력 : ", name2);
+	scanf("%d", &s2);
+	printf("\n세번째 사람 이름 :");
+	scanf("%s", &name3);
+	printf("\n%s가 받은 점수 입력 : ", name3);
+	scanf("%d", &s3);
+	printf("\n네번째 사람 이름 :");
+	scanf("%s", &name4);
+	printf("\n%s가 받은 점수 입력 : ", name4);
+	scanf("%d", &s4);
+	printf("1. %s\n2. %s\n3. %s\n4. %s", name1, name2, name3, name4);
+	printf("\n누구와 대조하시겠습니까?");
+	int a, b;
+	int z;
+	int t;
+
+	while (1) {
+
+
+		printf("\n알파벳 에이 입력:");
+		scanf("%d", &z);
+		printf("\n알파벳 비 입력:");
+		scanf("%d", &t);
+
+
+		if (z == 1 && t == 2) {
+			a = s1;
+			b = s2;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name1, name2);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name2, name1);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 1 && t == 3) {
+			a = s1;
+			b = s3;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name1, name3);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name3, name1);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 1 && t == 4) {
+			a = s1;
+			b = s4;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name1, name4);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name4, name1);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 2 && t == 1) {
+			a = s2;
+			b = s1;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name2, name1);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name1, name2);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 2 && t == 3) {
+			a = s2;
+			b = s3;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name2, name3);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name3, name2);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 2 && t == 4) {
+			a = s2;
+			b = s4;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name2, name4);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name4, name2);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 3 && t == 1) {
+			a = s3;
+			b = s1;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name3, name1);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name1, name3);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 3 && t == 2) {
+			a = s3;
+			b = s2;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name3, name2);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name2, name3);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 3 && t == 4) {
+			a = s3;
+			b = s4;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name3, name4);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name4, name3);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 4 && t == 1) {
+			a = s4;
+			b = s1;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name4, name1);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name1, name4);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 4 && t == 2) {
+			a = s4;
+			b = s2;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name4, name2);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name2, name4);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == 4 && t == 3) {
+			a = s4;
+			b = s3;
+			if (a > b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name4, name3);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+			if (a < b) {
+				printf("\n%s의 점수가 %s의 점수보다 큽니다.", name3, name4);
+				printf("\n\n%d ㅋㅋ %d", a, b);
+			}
+		}
+		if (z == t) {
+			printf("잘못된 입력입니다.");
+			break;
+		}
+
+	}
+}
