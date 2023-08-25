@@ -1,0 +1,121 @@
+int main() {
+	int a1 = 6, a2 = 12, a3 = 18;
+	int cnt1 = 0;
+	int cnt2 = 0;
+	int cnt3 = 0;
+	int zz;
+	int zz1;
+	int zz2;
+	printf("\n0ㅡㅡㅡㅡㅡ개ㅡ미1>>ㅡㅡㅡㅡㅡ<<개ㅡ미2ㅡㅡㅡㅡㅡ개ㅡ미3>>ㅡㅡㅡㅡㅡ24\n");
+	//1번개미 2번개미 3번개미가 다같이 움직임//
+	if (a1 != a2 || a3 != 24) {
+		while (1) {
+			cnt1++;
+			cnt2++;
+			cnt3++;
+			a1++;
+			a2--;
+			a3++;
+			printf("\n1번개미%d\n", a1);
+			printf("\n2번개미%d\n", a2);
+			printf("\n3번개미%d\n", a3);
+			//1번개미 2번개미 부딪혀서 멈추고 다음 조건문으로 이동//
+			if (a1 == a2) {
+				printf("\n1번개미%d\n", a1);
+				printf("\n2번개미%d\n", a2);
+				printf("\n3번개미%d\n", a3);
+				goto zz;
+			}
+		}
+	}
+	//1번개미 2번개미 서로 방향을 바꿈//
+	//3번개미가 끝에 먼저 도달하니 다같이 움직이다가 3번개미가 24번줄에 도착하면 다같이 멈춤//
+zz:for (;;) {
+	a1--;
+	a2++;
+	a3++;
+	cnt1++;
+	cnt2++;
+	cnt3++;
+	printf("\n1번개미%d\n", a1);
+	printf("\n2번개미%d\n", a2);
+	printf("\n3번개미%d\n", a3);
+	if (a3 == 24) {
+		goto zz1;
+	}
+}
+//3번개미가 떨어지고 1번개미와 2번개미가 도착지로 움직임//
+zz1:for (;;) {
+a1--;
+a2++;
+cnt1++;
+cnt2++;
+printf("\n1번개미%d\n", a1);
+printf("\n2번개미%d\n", a2);
+printf("\n3번개미%d\n", a3);
+if (a1 == 0) {
+	goto zz2;
+}
+}
+//1번개미가 떨어지고 2번개미만 움직임//
+zz2:for (;;) {
+a2++;
+cnt2++;
+printf("\n1번개미%d\n", a1);
+printf("\n2번개미%d\n", a2);
+printf("\n3번개미%d\n", a3);
+if (a2 == 24) {
+
+	break;
+}
+}
+
+
+	
+
+
+	
+		//결과//
+		printf("\n1번개미%d\n", a1);
+		printf("\n2번개미%d\n", a2);
+		printf("\n3번개미%d\n", a3);
+		printf("\n\n1번개미의 걸리는시간%d분 걸렸습니다. \n\n", cnt1);
+		printf("\n\n2번개미의 걸리는시간%d분 걸렸습니다. \n\n", cnt2);
+		printf("\n\n3번개미의 걸리는시간%d분 걸렸습니다. \n\n", cnt3);
+		//1등//
+		if (cnt1 < cnt2 && cnt1 < cnt3) {
+			printf("\n1번개미%d분으로 1등입니다.\n", cnt1);
+		}
+		if (cnt2 < cnt1 && cnt2 < cnt3) {
+			printf("\n2번개미%d분으로 1등입니다.\n", cnt2);
+		}
+		if (cnt3 < cnt1 && cnt3 < cnt2) {
+			printf("\n3번개미%d분으로 1등입니다.\n", cnt3);
+		}
+
+
+		//2등//
+		if (cnt2 > cnt1 && cnt1 > cnt3) {
+			printf("\n1번개미%d분으로 2등입니다.\n", cnt1);
+		}
+
+		if (cnt1 > cnt2 && cnt2 > cnt3) {
+			printf("\n2번개미%d분으로 2등입니다.\n", cnt2);
+		}
+		if (cnt1>cnt3&&cnt3>cnt2) {
+			printf("\n3번개미%d분으로 2등입니다.\n", cnt3);
+		}
+
+		//3등//
+		if (cnt1 > cnt2 && cnt1 > cnt3) {
+			printf("\n1번개미%d분으로 3등입니다.\n", cnt1);
+		}
+
+		if (cnt2 > cnt1 && cnt2 > cnt3) {
+			printf("\n2번개미%d분으로 3등입니다.\n", cnt2);
+		}
+		if (cnt3 > cnt1 && cnt3 > cnt2) {
+			printf("\n3번개미%d분으로 3등입니다.\n", cnt3);
+		}
+	
+}
