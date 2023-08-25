@@ -1,0 +1,231 @@
+	int main() {
+
+			int last;
+			int allprice = 0;
+			int food1 = 5, food2 = 10, food3 = 3;
+
+			int cardMenu;
+			//goto
+			int again;
+			//---------
+			int cnt1=0;
+			int bank = 0;
+			int bank2;
+			int outMoney = 0;
+			while (1) {
+					again:
+						
+					
+							printf("\n1계좌조회\n2계좌입금\n");
+							scanf("%d", &cardMenu);
+								if (cardMenu == 1) {
+									printf("당신의 계좌에는 %d원이 있습니다.", bank);
+									goto again;
+								}
+								if (cardMenu == 2) {
+									printf("\n입금할 금액을 입력하세요\n");
+									scanf("%d", &bank2);
+									bank = bank + bank2;
+									printf("\n계좌금액이 %d원이 되었습니다.\n", bank);
+									allprice = bank;
+									break;
+								}
+								//if (cardMenu == 3) {
+								//	printf("\n출금하실 금액을 입력해주세요\n");
+								//	scanf("%d", &outMoney);
+								//	if (bank == 0) {
+								//		printf("\n뺄수있는 금액이 없습니다.\n");
+								//		break;
+								//		goto zz2;
+								//	}
+								//	if (bank < outMoney) {
+								//		printf("\n잔액이 부족합니다.\n");
+								//		break;
+								//		goto zz2;
+								//	}
+								//	if (bank == outMoney) {
+								//		printf("\n잔액을 전부 빼서 금액이 0원 입니다.\n");
+								//		break;
+								//		goto zz2;
+								//	}
+								//	if (bank > outMoney) {
+								//		printf("\n남은 잔액은 %d원 입니다.\n", bank - outMoney);
+								//		break;
+								//		goto zz2;
+								//	}
+		
+								
+		
+							}
+			food1 = (food1 * bank) / 100;
+			food2 = (food2 * bank) / 100;
+			food3 = (food3 * bank) / 100;
+			
+			
+		
+
+
+
+
+
+
+
+
+
+
+
+		//음식점
+		
+		int choice2, choice3;
+		int a, b, c;
+		int s;
+		int mm;
+		int price=0;
+		int back;
+		int again2;
+		int cnt= 0;
+		int c1=0, c2=0, c3=0;
+		
+		
+		do {
+		again2:
+			c1 = 0, c2 = 0, c3 = 0;
+			price = 0;
+			cnt = cnt + 1;
+			
+			printf("\n\n %d번째 손님입니다\n\n", cnt);
+		back:
+			printf("\n\n현재가지고있는 금액은 %d원 입니다.\n\n", allprice);
+			printf("\n\n현재 누적금액은 %d원 입니다.", price);
+			printf("\n\n1.장어덮밥(%d원) 2.옥수수콘(%d원) 3.감자튀김(%d원) 4.환불 5.계산 6.종료\n\n", food1, food2, food3);
+			scanf("%d", &s);
+			switch (s) {
+			case 1: {
+				price = price + food1;
+
+				c1++;
+				printf("\n\n장어덮밥을 선택하셨습니다.\n\n 누적금액이 %d원 입니다.\n\n", price);
+				goto back;
+
+
+
+			}
+			case 2: {
+				c2++;
+				price = price + food2;
+				printf("\n\n옥수수콘을 선택하셨습니다.\n\n 누적금액이 %d원 입니다.\n\n", price);
+				goto back;
+
+
+			}
+			case 3: {
+				c3++;
+				price = price + food3;
+				printf("\n\n감자튀김을 선택하셨습니다.\n\n 누적금액이 % d원 입니다.\n\n", price);
+				goto back;
+
+
+			}
+			case 4: {
+
+				printf("현재 주문한 음식\n\n");
+				printf("1.장어덮밥%d개  2.옥수수콘%d개  3.감자튀김%d개", c1, c2, c3);
+				printf("어떤 음식을 몇개 환불하시겠습니까?\n\n1번 장어덮밥 2번 옥수수콘 3번 감자튀김\n\n");
+				scanf("%d", &choice2);
+				if (choice2 == 1) {
+					printf("장어덮밥을 선택하셨습니다.장어덮밥을 총 %d개 주문하셨습니다.\n 몇개를 환불하시겠습니까?\n\n", c1);
+					scanf("%d", &choice3);
+					if (choice3 > c1) {
+						printf("환불하시는 금액이 주문하신 금액보다 더 큽니다. 사기치지마세요\n\n");
+						goto back;
+					}
+					printf("%d개 환불하셔서 %d원을 돌려드립니다 누적금액에서 %d원이 빠졌습니다..\n\n", choice3, food1 * choice3, food1* choice3);
+					price = price - (food1 * choice3);
+
+				}
+				if (choice2 == 2) {
+					printf("옥수수콘을 선택하셨습니다.옥수수콘을 총 %d개 주문하셨습니다.\n 몇개를 환불하시겠습니까?\n\n", c2);
+					scanf("%d", &choice3);
+					if (choice3 > c2) {
+						printf("환불하시는 금액이 주문하신 금액보다 더 큽니다. 사기치지마세요\n\n");
+						goto back;
+					}
+					printf("%d개 환불하셔서 %d원을 돌려드립니다 누적금액에서 %d원이 빠졌습니다..\n\n", choice3, food2* choice3, food2* choice3);
+					price = price - (food2 * choice3);
+
+
+				}
+				if (choice2 == 3) {
+					printf("감자튀김을 선택하셨습니다. 감자튀김을 총 %d개 주문하셨습니다.\n 몇개를 환불하시겠습니까?\n\n", c3);
+					scanf("%d", &choice3);
+
+					if (choice3 > c3) {
+						printf("환불하시는 금액이 주문하신 금액보다 더 큽니다. 사기치지마세요\n\n");
+						goto back;
+
+					}
+					printf("%d개 환불하셔서 %d원을 돌려드립니다 누적금액에서 %d원이 빠졌습니다..\n\n", choice3, food3* choice3, food3* choice3);
+					price = price - (food3 * choice3);
+
+				}
+
+
+				goto back;
+			}
+			case 5: {
+				char how;
+
+				//printf("\n첫번째숫자\n\n");
+				//scanf("%d", &num1);
+				printf("현재가진돈 %d원\n\n", allprice);
+
+				printf("\n\n계산을 하실거면 - 를 입력하세요\n\n");
+				scanf("%s", &how);
+				//printf("\n두번째숫자\n\n");
+				printf("음식점 가격 %d원", price);
+				//scanf("%d", &num2);
+
+				switch (how) {
+					//case '+': {
+					//	printf("\n%d %c %d = %d", allprice, how, price, allprice+price);
+					//	allprice = allprice + price;
+					//	break;
+					//}
+				case '-': {
+					printf("\n현재가진돈%d %c 음식점가격%d = %d", allprice, how, price, allprice - price);
+					allprice = allprice - price;
+					price = 0;
+					goto back;
+				}
+				}
+
+			}
+
+mm:			
+			printf("\n1계좌조회\n2계좌입금\n3계좌출금\n");
+			scanf("%d", &cardMenu);
+				if (cardMenu == 1) {
+					printf("당신의 계좌에는 %d원이 있습니다.", allprice);
+					goto mm;
+			}
+			if (cardMenu == 2) {
+				printf("\n입금할 금액을 입력하세요\n");
+				scanf("%d", &bank2);
+				allprice = allprice + bank2;
+				printf("\n계좌금액이 %d원이 되었습니다.\n", allprice);
+				
+			}
+			case 6:{printf("1은행 2음식점 3.완전종료");
+			scanf("%d", &last);
+			if (last == 1) {
+				goto mm;
+			}
+			if (last == 2) {
+				goto again2;
+			}
+			if (last == 3) {
+				printf("손님은 총 %d명 왔고,총 매출을 %d원입니다.", cnt, allprice);
+			}
+			}
+		}
+	} while (s == 7);
