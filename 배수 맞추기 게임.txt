@@ -1,0 +1,266 @@
+int main() {
+	int n1, n2, n3, n4;
+	printf("지금부터 게임을 진행합니다.\n\n");
+	printf("첫번째 번호 입력 : \n");
+	scanf("%d", &n1);
+	printf("두번째 번호 입력 : \n");
+	scanf("%d", &n2);
+	printf("세번째 번호 입력 : \n");
+	scanf("%d", &n3);
+	printf("네번째 번호 입력 : \n");
+	scanf("%d", &n4);
+	int cnt = 0;
+	int cnt2 = 0;
+	int bb = 0;
+	int zz = 0;
+	char name1[10];
+	char name2[10];
+
+	int answer = n1 + n2 + n3 + n4;
+	int oldAnswer = n1 + n2 + n3 + n4;
+
+	int answer1 = 0;
+	int answer2 = 0;
+	int aanswer;
+	int new = 0;
+	int new2 = 0;
+	int b = 0;
+	int newCnt = 0;
+
+	printf("번호 저장 완료\n\n자 숫자는 제공되었고,\n\n 이제는 입력된 숫자가 모두 더해졌습니다.\n\n ");
+
+	printf("우리는 그 답을 맞춰보도록 하겠습니다. 최대한 빠른 사람이 승리입니다.\n\n");
+
+
+	printf("1번 플레이어의 이름을 입력하여 주십시오: ");
+	scanf("%s", &name1);
+	printf("2번 플레이어의 이름을 입력하여 주십시오: ");
+	scanf("%s", &name2);
+	printf("\n\n% s님% s님 반갑습니다.\n\n", name1, name2);
+
+	printf("지금부터 게임을 진행할 것인데, 몇 가지 소소한 규칙을 정하도록 하겠습니다.\n");
+	printf("규칙 1 : 5의 배수 번째 턴에 정답을 입력한 경우 오답으로 표출 되며,\n 정답이 + 1200이 된다.\n7의 배수 번째 턴에 정답을 입력한 경우,\n 오답으로 표출 되며, 정답이 - 560이 된다.\n");
+	printf("규칙 2 : 만약 위 규칙 1번 때문에 아깝게 정답을 맞추지 못하는 사람의 턴[돌아오는 턴]에만,\n 아래 힌트가 제공된다.\n");
+	printf("힌트1. 힌트 1은 정답의 약수를 제공한다. \n그러나 약수 중에서도 20이상의 숫자만 나타나야 하고,\n약수의 개수가 최대 5개까지만 나올 수 있다. (약수가 5개 이하면 전부 나타난다.\n");
+	printf("예시) 정답이 100인 경우\n\n");
+	printf("정답이 20의 배수입니다.\n정답이 25의 배수입니다.\n정답이 50의 배수입니다.\n 정답이 100의 배수입니다.\n 더 이상 일치하는 배수가 없습니다.\n");
+	printf("예시) 정답이 50인 경우\n\n");
+	printf("정답이 25의 배수입니다.\n정답이 50의 배수입니다.\n더 이상 일치하는 배수가 없습니다.\n");
+	printf("힌트2. 최근 5턴동안 [서로 한 번씩 숫자를 입력하였을 경우가 한 턴] 입력한 숫자 중에서,\n정답이 존재하는 경우,'이전 최근 6턴 중에서 정답이 존재합니다'\n");
+	printf("정답이 존재하지 않는 경우,'이전 최근 5턴 중에서 정답이 존재하지 않습니다.'\n\n");
+	printf("힌트3. 만약 위 힌트를 받고도, 정답을 못 풀었을 경우,\n다음 사람이 바로 정답을 맞추는 것을 방지하기 위해 아래 같은 조건이 나타난다.\n힌트1에서 나타난 값이 1개라면, 정답이 100이 +되고,\n힌트1에서 나타난 값이 3개라면, 정답이 360이 +되고,\n힌트1에서 나타난 값이 5개가 나타났다면, 정답이 1700이 +된다.\n단, '더 이상 일치하는 배수가 없습니다'라는 문구는 포함되지 않는다.\n\n");
+	printf("힌트4. 힌트를 이미 받았는데, 정답을 못 맞추었다면, 패널티가 작동된다.\n패널티란, 이후로 ?턴동안, 힌트를 받을 수 없게 되는 패널티이다.\n힌트 1번에서 알려준 배수가 3개 미만이라면 해당 턴은 + 1이 된다.\n힌트 2번에서 5턴 중에 정답이 존재하였는데도 맞추지 못했다면 턴은 + 3이된다.\n힌트 3번에서 나온 값을 포함하여, 정답이 2000이상이라면, + 7턴이 된다.\n힌트 3번에서 나온 값이 2000 미만이라면 -9턴이 된다.\n기본 제공되는 패널티는 3턴이다.\n\n");
+	printf("규칙 3 : 8의 배수 번째 이후에도 정답이 나오지 않을 시 정답의 각 자리수 합을 힌트로 제공한다.\n\n예시) 정답이 2500일 경우 7을 제공.\n\n");
+	printf("규칙 4 : 10턴의 배수 턴까지 정답이 나오지 않을 경우 정답의 자리수를 힌트로 제공한다.\n\n예시) 정답이 450일 경우 3자리 수로 힌트가 제공된다.\n\n");
+
+
+	printf("\n\n\n\n===========================컴퓨터가 알려주는 지원=========================\n\n\n\n");
+	printf("1.플레이어가 제시한 숫자보다 크거나 작을시 컴퓨터가 알려줍니다. 그럼 게임을 시작하겠습니다.\n\n");
+	printf("\n%s님 부터 시작합니다.\n", name1);
+	while (1) {
+		cnt++;
+		b++;
+		printf("\n\n관리자용 정답%d\n\n", answer);
+
+		printf("\n\n숫자카운트%d\n\n", cnt);
+
+
+		if (cnt >= 5 && cnt % 5 == 0 && zz > 0) {
+
+			b = 0;
+			printf("최근 5판중에 처음 정답이 있습니다.");
+		}
+		if (cnt >= 5 && cnt % 5 == 0 && zz == 0) {
+
+			b = 0;
+			printf("최근 5판중에 처음 정답이 존재하지 않습니다.");
+		}
+
+		if (cnt > 5 && cnt % 5 == 0) {
+			printf("\n\n5의 배수의 판입니다\n\n");
+		}
+		if (cnt > 7 && cnt % 7 == 0) {
+			printf("\n\n7의 배수의 판입니다\n\n");
+
+		}
+		int zzzz = 0;
+		int zzzz1 = 0;
+		int a3 = answer;
+		int a4 = answer;
+		if (cnt > 8 && cnt % 8 == 0) {
+			printf("\n\n8의 배수의 판입니다.\n힌트를 제공합니다.\n");
+			while (a3 != 0) {
+				a3 = a3 / 10;
+				newCnt++;
+			}
+			for (int j = 0; j <= newCnt; j++) {
+				zzzz = a4 % 10;
+				zzzz1 = zzzz1 + zzzz;
+				a4 = a4 / 10;
+
+			}
+			printf("\n\n 정답의 자릿수의 합은%d 입니다.", zzzz1);
+		}
+		if (cnt > 10 && cnt % 10 == 0) {
+			printf("\n\n10의 배수의 판입니다.\n 힌트를 제공합니다. \n");
+			printf("\n\n 정답의 자릿수는 %d 입니다.", newCnt);
+		}
+
+		printf("\n\n%s 님이 입력할 번호", name1);
+		scanf("%d", &answer1);
+
+
+		if (b == 1 && answer1 == oldAnswer) {
+			zz++;
+		}
+		if (b == 2 && answer1 == oldAnswer) {
+			zz++;
+		}
+		if (b == 3 && answer1 == oldAnswer) {
+			zz++;
+		}
+		if (b == 4 && answer1 == oldAnswer) {
+			zz++;
+		}
+		if (b == 5 && answer1 == oldAnswer) {
+			zz++;
+		}
+
+
+		if (answer1 > answer) {
+			printf("\n%s님이 입력하신 숫자보다 답이 더 작습니다.", name1);
+		}
+		if (answer1 < answer) {
+			printf("\n%s님이 입력하신 숫자보다 답이 더 큽니다.", name1);
+		}
+
+		if (cnt > 5 && cnt % 5 == 0 && answer1 == answer) {
+			printf("\n\n오답입니다.\n정답에 +1200이 됩니다.");
+			answer = answer + 1200;
+			bb++;
+		}
+		if (cnt > 7 && cnt % 7 == 0 && answer1 == answer) {
+			printf("\n\n오답입니다.\n정답에 -560 이 됩니다.");
+			answer = answer - 560;
+			bb++;
+		}
+
+
+
+		if (answer1 == answer) {
+			printf("정답입니다.\n%s님 승리!", name1);
+			break;
+		}
+
+
+
+
+
+		//------------------두번째플레이어------------------//
+
+
+
+		printf("\n\n%s 님이 입력할 번호", name2);
+		scanf("%d", &answer2);
+
+
+		if (b == 1 && answer2 == oldAnswer) {
+			zz++;
+		}
+		if (b == 2 && answer2 == oldAnswer) {
+			zz++;
+		}
+		if (b == 3 && answer2 == oldAnswer) {
+			zz++;
+		}
+		if (b == 4 && answer2 == oldAnswer) {
+			zz++;
+		}
+		if (b == 5 && answer2 == oldAnswer) {
+			zz++;
+		}
+
+
+		if (answer2 > answer) {
+			printf("\n%s님이 입력하신 숫자보다 답이 더 작습니다.", name2);
+		}
+		if (answer2 < answer) {
+			printf("\n%s님이 입력하신 숫자보다 답이 더 큽니다.", name2);
+		}
+
+		if (cnt > 5 && cnt % 5 == 0 && answer2 == answer) {
+			printf("\n\n오답입니다.\n정답에 +1200이 됩니다.");
+			answer = answer + 1200;
+			bb++;
+		}
+		if (cnt > 7 && cnt % 7 == 0 && answer2 == answer) {
+			printf("\n\n오답입니다.\n정답에 -560 이 됩니다.");
+			answer = answer - 560;
+			bb++;
+		}
+		if (answer2 == answer) {
+			printf("정답입니다.\n%s님 승리!", name2);
+			break;
+		}
+		int a = 0;
+
+		if (cnt > 5 && cnt % 5 == 1 && bb > 0) {
+			printf("\n\n힌트를 주겠습니다.\n\n");
+			for (int i = 1; i <= answer; i++) {
+				if (answer % i == 0) {
+					if (i >= 20) {
+						a++;
+						printf("\n정답이 %d의 배수입니다\n", i);
+						if (a == 5) {
+							printf("더이상 일치하는 배수가 없습니다.");
+							break;
+						}
+					}
+				}
+			}
+		}
+		if (cnt > 7 && cnt % 7 == 1 && bb > 0) {
+			printf("\n\n힌트를 주겠습니다.\n\n");
+			for (int i = 1; i <= answer; i++) {
+				if (answer % i == 0) {
+					if (i >= 20) {
+						a++;
+						printf("\n정답이 %d의 배수입니다\n", i);
+						if (a == 5) {
+							printf("더이상 일치하는 배수가 없습니다.");
+							break;
+						}
+					}
+				}
+			}
+		}
+		if (cnt > 5 && cnt % 5 == 2 && bb > 0) {
+			printf("\n\n힌트를 받았는데도 답을 못맞추셨습니다..\n\n");
+			for (int i = 1; i <= answer; i++) {
+				if (answer % i == 0) {
+					if (i >= 20) {
+						a++;
+						if (a == 5) {
+							break;
+						}
+					}
+				}
+			}
+			if (a == 1) {
+				answer = answer + 100;
+				printf("\n정답에 100이 추가됩니다.");
+			}
+			if (a == 3) {
+				answer = answer + 360;
+				printf("\n정답에 360이 추가됩니다.");
+			}
+			if (a == 5) {
+				answer = answer + 1700;
+				printf("\n정답에 1700이 추가됩니다.");
+			}
+		}
+
+
+	}
+}
+
