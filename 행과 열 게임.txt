@@ -1,0 +1,261 @@
+int main() {
+
+
+
+
+
+
+	int ary[10][10]={ 0, };
+	int ary2[10][10] = { 0,};
+	int a1,a2,a3;
+	int cnt = 10;
+	int cnt2=0;
+	int wr[10][10];
+	int cnt3 = 0;
+	
+
+	//맞춘정답 카운트
+	int lastCnt = 0;
+	int start = 0;
+	int bingo[100] = {0,};
+	
+	//보너스게임
+	int sum = 0;
+	int sum2 = 0;
+	int answer = 0;
+
+
+
+	//틀린정답 저장 배열
+	int wAnswer[100]={0,};
+	int wAnswer2[100] = { 0, };
+	int plus = 0;
+	int plus2 = 0;
+	int temp = 0;
+	int n = 1;
+	int b[100] = { 0, };
+	int zcnt = 0;
+	int plus3 = 0;
+
+
+	
+
+
+
+
+	//==========
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 4; j++) {
+			printf("[%d][%d]의 값을 입력해주세요",i,j);
+			scanf_s("%d", &ary[i][j]);
+		}
+	}
+	printf("숫자가 저장되었습니다. 답변자는 지금부터 문제에 대한 답변을 해주세요.\n");
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 4; j++) {
+			printf("[%d][%d]:?   ", i, j, ary2[i][j]);
+			
+		}
+		printf("\n");
+	}
+	printf("답변을 맞추고 싶으시면 행과 열을 입력해주세요\n");
+
+
+	//문제시작
+	for (;;) {
+
+
+		//행과 열 입력
+		printf("입력할 행과 열\n");
+		scanf_s("%d %d", &a1, &a2);
+
+
+		//이미 맞춘 행과 열을 또 입력할 경우
+		if (ary2[a1][a2] != 0) {
+			printf("맞춘 정답을 다시한번 입력할순 없습니다. \n");
+		}
+		//정답입력
+		else {
+
+			printf("%d행과 %d열을 입력하셨습니다. 정답은 무엇입니까?", a1, a2);
+			scanf_s("%d", &a3);
+
+			//틀렸을 경우
+			if (ary[a1][a2] != a3) {
+				wAnswer[plus] = ary[a1][a2];
+				plus++;
+				cnt--;
+				cnt2++;
+				for (int i = 0; i < cnt2; i++) {
+					printf("틀린문제는 %d\n", wAnswer[i]);
+				}
+				printf("\n\n==========정답이 아닙니다.==========\n");
+				printf("\n\n==========기회가 %d번 째 남았습니다.==========\n", cnt);
+
+			}
+			//10번 다 틀렸을 경우
+			if (cnt == 0) {
+				printf("기회를 모두 소진하셨습니다.정답을 공개합니다!\n");
+				for (int i = 0; i < 3; i++) {
+					for (int j = 0; j < 4; j++) {
+						printf("[%d][%d]:%d   ", i, j, ary[i][j]);
+
+					}
+					printf("\n");
+				}
+				break;
+			}
+			//맞췄을 경우
+			else {
+				for (int i = 0; i < 3; i++) {
+					for (int j = 0; j < 4; j++) {
+						if (ary[a1][a2] == a3) {
+							ary2[a1][a2] = ary[a1][a2];
+							if (ary2[i][j] == 0) {
+								printf("[%d][%d]:?   ", i, j);
+							}
+							else {
+								printf("[%d][%d]:%d   ", i, j, ary2[i][j]);
+							}
+						}
+					}
+					printf("\n");
+				}
+				if (ary[a1][a2] == a3) {
+					bingo[plus3] = a3;
+					plus3++;
+				}
+			}
+		}
+
+
+		//정답 맞춘 회수 카운트
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 4; j++) {
+				if (ary2[i][j] != 0) {
+					lastCnt++;
+				}
+			}
+			if (lastCnt == 3) {
+				start = 3;
+			}
+		}
+
+		printf("정답을 %d개 맞추셨습니다.\n\n", lastCnt);
+		lastCnt = 0;
+
+		
+
+
+
+		if (start == 3) {
+			//틀린문제 해결
+
+
+
+			//틀린숫자 정렬하고
+			for (int i = 0; i < cnt2 - 1; i++)
+			{
+				for (int j = 0; j < cnt2 - 1 - i; j++)
+				{
+					if (wAnswer[j] > wAnswer[j + 1])
+					{
+						temp = wAnswer[j];
+						wAnswer[j] = wAnswer[j + 1];
+						wAnswer[j + 1] = temp;
+					}
+				}
+			}
+
+			b[0] = wAnswer[0];
+			//중복되지않는 틀린숫자
+			printf("중복을 없앤 틀린숫자배열 입니다 : ");
+			for (int i = 1; i < cnt2; i++)
+				if (wAnswer[i] != b[n - 1]) b[n++] = wAnswer[i];
+			for (int i = 0; i < n; i++)
+				printf("%d ", b[i]);
+			printf("\n");
+			
+
+
+
+
+
+
+			printf("\n틀린숫자들의 정답입니다.");
+			for (int i = 0; i < cnt2; i++) {
+				printf("%d  ",wAnswer[i]);
+			}
+
+
+			//틀린문제 중복 해결================================================
+
+			for (int i = 0; i < n; i++) {
+				printf("\n\n***b[%d]의 숫자 % d***\n\n", i, b[i]);
+				for (int j = 0; j < cnt2; j++) {
+					printf("\nb[%d]의 숫자%d\n", i, b[i]);
+					printf("\nwAnswer[%d]의 숫자%d\n", j, wAnswer[j]);
+					if (b[i] == wAnswer[j]) {
+						plus2++;
+						if (plus2 == 2) {
+							wAnswer2[zcnt] = b[i];
+							plus2 = 0;
+							zcnt++;
+							continue;
+						}
+					}
+				}
+				plus2 = 0;
+			}
+
+
+
+			//==================================================================
+
+
+
+			//틀린문제들========================================================
+			printf("\n");
+			for (int i = 0; i < zcnt; i++) {
+				printf("\n\n틀린숫자%d  ", wAnswer2[i]);
+				sum =sum+ wAnswer2[i];
+			}
+			for (int i = 0; i < plus3; i++) {
+				printf("\n\n빙고 % d  ", bingo[i]);
+				sum2 = sum2 + bingo[i];
+			}
+
+			printf("정답은 : %d", sum+sum2);
+
+			printf("\n\n정답을 모두 맞추셔서 보너스 게임이 시작됩니다\n");
+			printf("2번이상 틀린 숫자 + 3개의 정답을 더해서 입력해주세요\n보너스게임이라 기회는 오직 한번입니다\n");
+			
+
+			printf("정답을 입력해주세요 :");
+			scanf_s("%d",&answer);
+			
+
+			if (answer == sum + sum2) {
+				printf("\n축하합니다 정답입니다!\n");
+				return 0;
+			}
+			else {
+				printf("\n오답입니다. 정답은 %d입니다...\n");
+				return 0;
+			}
+
+
+
+
+
+
+		}
+	}
+	
+
+	
+
+
+
+}
