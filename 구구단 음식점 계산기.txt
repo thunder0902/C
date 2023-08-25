@@ -1,0 +1,151 @@
+int main() {
+	int rice;
+	int noodle;
+	int x1;
+	int x2;
+	int x3;
+	int i = 0;
+	int two = 2;
+	int dan = 8;
+	int price = 0;
+	int choice2;
+	int choice;
+	int choice3;
+	int	num1;
+	int num2;
+	int qqq = 0;
+	int choiceX;
+
+	while (1) {
+		printf("\n\n1.구구단\n2.음식점\n3.계산기\n4.종료\n");
+		scanf("%d", &choice);
+		if (choice == 1) {
+			while (i <= dan) {
+				i++;
+				printf("%d*%d = %d\n", two, i, two * i);	
+			}
+			i = 0;
+		}
+		if (choice == 2) {
+			if (price == 0) {
+				printf("볶음밥의 가격을 입력해주세요");
+				scanf("%d", &rice);
+				printf("우동의 가격을 입력해주세요");
+				scanf("%d", &noodle);
+				printf("탕수육의 가격을 입력해주세요");
+				printf("탕수육 소");
+				scanf("%d", &x1);
+				printf("탕수육 중");
+				scanf("%d", &x2);
+				printf("탕수육 대");
+				scanf("%d", &x3);
+			}
+			while (1) {
+
+
+				printf("1.볶음밥  2.짜장면  3.탕수육(소,중,대) 4.종료\n");
+				scanf("%d", &choice2);
+
+
+
+				if (choice2 == 1) {
+					price = price + rice;
+					printf("볶음밥이 추가되어서 누적금액%d원 입니다.\n", price);
+				}
+
+				if (choice2 == 2) {
+					price = price + noodle;
+					printf("짜장면이 추가되어서 누적금액%d원 입니다.\n", price);
+
+				}
+
+				if (choice2 == 3) {
+					
+					printf("탕수육 1.소 2.중 3.대 선택하세요.   4.이전");
+					scanf("%d", &choiceX);
+					if (choiceX == 1) {
+						price = price + x1;
+						printf("탕수육 소가 추가되어서 누적금액%d원 입니다.\n", price);
+
+					}
+					if (choiceX == 2) {
+						price = price + x2;
+						printf("탕수육 중이 추가되어서 누적금액%d원 입니다.\n", price);
+
+					}
+					if (choiceX == 3) {
+						price = price + x3;
+						printf("탕수육 대가 추가되어서 누적금액%d원 입니다.\n", price);
+
+					}
+				}
+				if (choice2 == 4) {
+					break;
+				}
+				printf("누적금액  %d원 입니다.\n", price);
+
+			}
+		}
+		if (choice == 3) {
+			while (1) {
+				printf("더하기 빼기만 있는 계산기 입니다.");
+				printf("\n\n1.더하기   2.빼기");
+				scanf("%d", &choice3);
+				if (choice3 == 1) {
+					if (qqq == 0) {
+						printf("첫번째 숫자를 입력하세요");
+						scanf("%d", &num1);
+						printf("두번째 숫자를 입력하세요");
+						scanf("%d", &num2);
+						printf("%d + %d = %d", num1, num2, num1 + num2);
+						qqq = num1 + num2;
+						printf("\n\n\n결과%d", qqq);
+						break;
+					}
+					if (qqq!= 0) {
+						printf("\n두번째 숫자를 입력하세요");
+						scanf("%d", &num2);
+						printf("\n%d + %d = %d", qqq, num2, qqq + num2);
+						qqq = qqq + num2;
+						printf("\n\n\n결과%d", qqq);
+						break;
+					}
+				}
+				if (choice3 == 2) {
+					if (qqq == 0) {
+						printf("\n첫번째 숫자를 입력하세요");
+						scanf("%d", &num1);
+						printf("\n두번째 숫자를 입력하세요");
+						scanf("%d", &num2);
+						printf("\n\n%d - %d = %d", num1, num2, num1 - num2);
+						qqq = num1 - num2;
+						printf("\n\n\n결과%d", qqq);
+						break;
+						if (num1 < num2) {
+							printf("\n두번째 숫자가 더 클수는 없습니다!");
+							printf("\n\n\n결과%d", qqq);
+							break;
+						}
+					}
+					if (qqq != 0) {
+						printf("\n두번째 숫자를 입력하세요");
+						scanf("%d", &num2);
+						printf("\n\n%d - %d = %d", qqq, num2, qqq - num2);
+						qqq = qqq - num2;
+						printf("\n\n\n결과%d", qqq);
+						break;
+						if (qqq < num2) {
+							printf("두번째 숫자가 더 클수는 없습니다!");
+							printf("\n\n\n결과%d", qqq);
+							break;
+						}
+					}
+				}
+			}
+		}
+		if (choice == 4) {
+			printf("\n\n누적금액%d원 \n\n계산기 금액%d", price, qqq);
+			break;
+		}
+	}	
+}
