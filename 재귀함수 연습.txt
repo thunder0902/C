@@ -1,0 +1,82 @@
+int dragon_money;
+int plus_dragon_money;
+int cnt = 0;
+int rice_price, noodle_price, snack_price;
+char rice[10] = "떡볶이";
+char noodle[10] = "우동";
+char snack[10] = "과자";
+
+plus_money(int money) {
+	if (cnt > 0) {
+		printf("쫒겨났습니다");
+		return 0;
+	}
+	cnt++;
+	int plus;
+	printf("\n추가하실 용돈을 입력하세요");
+	scanf("%d", &plus);
+	dragon_money = money + plus;
+}
+
+
+food_buy(char food_name[10], int price,int money) {
+		int order;
+		printf("\n*******현재 가지고있는 용돈은 %d원 입니다.*******", dragon_money);
+		printf("\n%s의 가격은 %d원 입니다.\n몇개를 선택하시겠습니까?", food_name, price);
+		scanf("%d", &order);
+		price = price * order;
+		
+		printf("\n%s를 %d개 주문하셔서 가격은 %d원 입니다.", food_name, order, price);
+		money = money - price;
+		if (dragon_money >= price) {
+			printf("\n[용돈이 총 %d원 남았습니다.]", money);
+			dragon_money = money;
+		}
+		else {
+			printf("\n%d원이 부족합니다.",price-dragon_money);
+			plus_money(dragon_money);
+			dragon_money = dragon_money - price;
+			if (dragon_money == 0||dragon_money<0) {
+				return 0;
+			}
+			else {
+				printf("%s를 구매하셔서 용돈이 %d원 남았습니다.", food_name, dragon_money);
+			}
+		}
+}
+loop(int num) {
+
+	if (num == 0) {
+		food_buy(rice, rice_price, dragon_money);
+	}
+	if (num == 1) {
+		food_buy(noodle, noodle_price, dragon_money);
+	}
+	if (num == 2) {
+		food_buy(snack, snack_price, dragon_money);
+	}
+	if (num == 3) {
+		return 0;
+	}
+
+	return num * loop(num + 1);
+}
+
+int main() {
+	int n = 0;
+
+	printf("처음 용돈은 10000원 입니다.\n");
+	printf("추가하실 용돈을 입력하세요\n");
+	scanf("%d", &plus_dragon_money);
+	dragon_money = 10000 + plus_dragon_money;
+
+	printf("%s의 가격을 입력하세요", rice);
+	scanf("%d", &rice_price);
+	printf("\n%s의 가격을 입력하세요", noodle);
+	scanf("%d", &noodle_price);
+	printf("\n%s의 가격을 입력하세요", snack);
+	scanf("%d", &snack_price);
+
+
+	return loop(n);
+}
